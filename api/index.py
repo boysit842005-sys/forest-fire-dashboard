@@ -2,9 +2,18 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from fastapi.responses import HTMLResponse
+
+
 
 app = FastAPI(title="Vercel Cloud Fire Monitoring Server")
+# (Các đoạn code khác giữ nguyên)
 
+@app.get("/", response_class=HTMLResponse)
+async def dashboard_ui():
+    return """
+    <!-- Toàn bộ phần mã HTML giao diện ở đây (bắt đầu bằng <!DOCTYPE html>...) -->
+    """
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
