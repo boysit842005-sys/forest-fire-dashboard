@@ -2,18 +2,9 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from fastapi.responses import HTMLResponse
-
-
 
 app = FastAPI(title="Vercel Cloud Fire Monitoring Server")
-# (Các đoạn code khác giữ nguyên)
 
-@app.get("/", response_class=HTMLResponse)
-async def dashboard_ui():
-    return """
-    <!-- Toàn bộ phần mã HTML giao diện ở đây (bắt đầu bằng <!DOCTYPE html>...) -->
-    """
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -21,7 +12,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Lưu duy nhất bản ghi mới nhất trên RAM (Tự động xóa dữ liệu cũ)
 latest_station_data = {
     "temperature": 0.0,
     "humidity": 0.0,
