@@ -43,7 +43,9 @@ async def update_from_laptop(payload: CloudPayload):
 async def get_latest():
     return latest_station_data
 
-@app.get("/", response_class=HTMLResponse)
+# Dự phòng định tuyến kép cho Vercel
+@app.get("/")
+@app.get("/api/index.py")
 async def dashboard_ui():
     return """
 <!DOCTYPE html>
